@@ -1,0 +1,40 @@
+class Solution(object):
+    def numberOfSubarrays(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        v=len(nums)
+        int_total=0
+        for i in range(v):
+            if nums[i]%2==0:
+                nums[i]=0
+            else:
+                nums[i]=1
+        sum=0
+        Hash_map={0:1}
+        for i in range(v):
+            sum+=nums[i]
+            Obtain=sum-k
+            if Obtain in Hash_map:
+                int_total+=Hash_map[Obtain]
+            if sum not in Hash_map:
+                Hash_map[sum]=1
+            else:
+                Hash_map[sum]+=1
+        return int_total
+            
+       
+
+
+
+
+
+        
+        
+
+
+
+
+        
